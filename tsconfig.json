@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es5",
+    "module":"es2015",
+    "lib": [],
+    "strict": false,
+    "sourceMap": false,
+    "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "outDir": "./"
+  },
+  "files": [
+    "src/gatsby-node.ts",
+    "src/linkedin.ts"
+  ]
+}

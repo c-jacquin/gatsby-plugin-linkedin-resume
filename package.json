@@ -1,0 +1,51 @@
+{
+  "name": "gatsby-plugin-linkedin-resume",
+  "version": "0.0.0-development",
+  "description": "gatsby plugin which allow to display linkedin data in your site",
+  "keywords": [
+    "gatsby",
+    "linkedin",
+    "resume"
+  ],
+  "author": "Charles Jacquin <charles.jacquin@autistici.org>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charjac/gatsby-plugin-linkedin-resume.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.tsx'",
+    "build": "tsc",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@types/event-stream": "^3.3.34",
+    "@types/node": "^12.0.4",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "semantic-release": "^15.13.12",
+    "travis-deploy-once": "^5.0.11",
+    "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {
+    "camelcase": "^5.3.1",
+    "csv-parse": "^4.4.3",
+    "event-stream": "^4.0.1",
+    "unzip-stream": "^0.3.0"
+  }
+}
