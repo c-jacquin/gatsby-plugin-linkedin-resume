@@ -4,9 +4,9 @@
 
 You need to download your linkedin information here https://www.linkedin.com/psettings/member-data 
 
-todo add a screenshot
+![screenshot](https://raw.githubusercontent.com/charjac/gatsby-plugin-linkedin-resume/master/screenshot.png)
 
-rename the zio file linkedin.zip and put it in the root of your project.
+rename the zip file linkedin.zip and put it in the root of your project.
 
 ## Installation
 
