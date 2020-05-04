@@ -68,7 +68,7 @@ function extractInfo() {
       .on('finish', () =>
         resolve({
           ...result.profile,
-          skills: result.skills ? result.skills.map(({ name }: any) => name) : [],
+          skills: result.skills.map(({ name }: any) => name),
           education: result.education,
           languages: result.languages,
           experiences: result.positions,
