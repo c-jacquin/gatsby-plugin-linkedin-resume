@@ -7,15 +7,13 @@ import es from 'event-stream';
 import camelcase from 'camelcase';
 
 const ZIP_PATH = path.join(process.cwd(), 'linkedin.zip');
-const BLACKLIST_FILES = [
-  'Contacts.csv',
-  'Registration.csv',
-  'Connections.csv',
-  'Invitations.csv',
-  'messages.csv',
-  'Rich Media.csv',
-  'Videos.csv',
-  'Ad_Targeting.csv',
+const TARGET_FILES = [
+  'Profile.csv',
+  'Skills.csv',
+  'Education.csv',
+  'Languages.csv',
+  'Positions.csv',
+  'Email Addresses.csv',
 ];
 
 function extractInfo() {
@@ -26,31 +24,32 @@ function extractInfo() {
     transform: (entry, e, cb) => {
       const filePath = entry.path;
 
-      if (BLACKLIST_FILES.includes(filePath)) {
-        entry.autodrain();
-        cb();
-      } else {
-        const formatLine = (csv: string) => {
-          entry.pause();
+      if (TARGET_FILES.includes(filePath)) {
+        const formatLine = (csv: string, cb: (e: Error, data: any) => void) => {
           parse(
             csv.toString(),
             {
               columns: header => header.map(camelcase),
             },
             (error, records) => {
+              const key = camelcase(filePath.split('.')[0]);
+
               if (error) {
+                console.error(`error while reading file ${key}:`, error);
                 entry.destroy(error);
               } else {
-                const key = camelcase(filePath.split('.')[0]);
-
                 result[key] = key === 'profile' ? records[0] : records;
               }
+
+              cb(null, null);
             },
           );
-          entry.resume();
         };
 
-        entry.pipe(es.mapSync(formatLine)).on('close', cb);
+        entry.pipe(es.map(formatLine)).on('close', cb);
+      } else {
+        entry.autodrain();
+        cb(null, null);
       }
     },
   });
@@ -69,7 +68,7 @@ function extractInfo() {
       .on('finish', () =>
         resolve({
           ...result.profile,
-          skills: result.skills.map(({ name }: any) => name),
+          skills: result.skills ? result.skills.map(({ name }: any) => name) : [],
           education: result.education,
           languages: result.languages,
           experiences: result.positions,

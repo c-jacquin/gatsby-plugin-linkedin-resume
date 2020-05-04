@@ -17,6 +17,7 @@
     "node": ">=8.0.0"
   },
   "scripts": {
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.tsx'",
     "build": "tsc",
     "commit": "git-cz",
@@ -31,14 +32,17 @@
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
     "@types/event-stream": "^3.3.34",
+    "@types/mocha": "^7.0.2",
     "@types/node": "^12.6.8",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^3.0.1",
     "lint-staged": "^9.2.1",
+    "mocha": "^7.1.2",
     "prettier": "^1.18.2",
     "semantic-release": "^15.13.18",
     "travis-deploy-once": "^5.0.11",
+    "ts-node": "^8.10.1",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
@@ -46,7 +50,9 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
+    "@types/chai": "^4.2.11",
     "camelcase": "^5.3.1",
+    "chai": "^4.2.0",
     "csv-parse": "^4.4.3",
     "event-stream": "^4.0.1",
     "unzip-stream": "^0.3.0"
